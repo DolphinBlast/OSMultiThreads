@@ -10,6 +10,7 @@ def Bmatrix(i, j):
 
 A =  [[0] * 80 for _ in range(50)]      #A50x80
 B =  [[0] * 50 for _ in range(80)]      #B80x50
+C =  [[0] * 50 for _ in range(50)]      #C50x50
 
 for i in range(0,50,1):
     for j in range(0,80,1):
@@ -19,8 +20,11 @@ for i in range(0,80,1):
     for j in range(0,50,1):
         B[i][j] = Bmatrix(i+1, j+1)
 
-print(A)
 
+for i in range(0,50,1):
+    for j in range(0,50,1):
+        for k in range(0,80,1):
+            C[i][j] += A[i][k] * B[k][j]
 
 with open("matrixA.csv", "w", newline="") as csvf:
     writer = csv.writer(csvf)
@@ -29,3 +33,7 @@ with open("matrixA.csv", "w", newline="") as csvf:
 with open("matrixB.csv", "w", newline="") as csvf:
     writer = csv.writer(csvf)
     writer.writerows(B)
+
+with open("matrixC_PreG.csv", "w", newline="") as csvf:
+    writer = csv.writer(csvf)
+    writer.writerows(C)

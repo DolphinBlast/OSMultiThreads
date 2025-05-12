@@ -18,7 +18,7 @@ with open("matrixB.csv", "r") as csvf:
         numeric_row = [float(x) for x in row]
         B.append(numeric_row)
 
-with open("matrixC_R.csv", "r") as csvf:
+with open("matrixC_PreG.csv", "r") as csvf:
     rows = csv.reader(csvf)
     for row in rows:
         numeric_row = [float(x) for x in row]
@@ -80,12 +80,13 @@ for i in range(0,splitX):
         threads[i][j].join()
 
 runningTime = datetime.now() - saveSystemTime
-print("Running time: ", runningTime)
-print("Done")
 
 if C == C_R:
     print("Matrix C is correct.")
+    print("Running time: ", runningTime)
 else:
     print("Matrix C is incorrect.")
+
+print("Done")
 
 
